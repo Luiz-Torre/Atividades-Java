@@ -44,7 +44,7 @@ public class SistemaAcademico {
 
                 
                 if(quant_alunos> 0){
-                     Aluno [] aux_vetor_alunos = SistemaAcademico.vetor_alunos.clone();
+                    Aluno [] aux_vetor_alunos = SistemaAcademico.vetor_alunos.clone();
                     SistemaAcademico.vetor_alunos = new Aluno[quant_alunos+1];
                     System.arraycopy(aux_vetor_alunos, 0, SistemaAcademico.vetor_alunos, 0, aux_vetor_alunos.length); 
                     SistemaAcademico.vetor_alunos[quant_alunos] = aluno_atual;
