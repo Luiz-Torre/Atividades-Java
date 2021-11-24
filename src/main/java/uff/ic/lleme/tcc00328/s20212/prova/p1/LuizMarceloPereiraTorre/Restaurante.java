@@ -3,7 +3,7 @@ package uff.ic.lleme.tcc00328.s20212.prova.p1.LuizMarceloPereiraTorre;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+import java.text.DecimalFormat;
 public class Restaurante {
     static Prato[] todos_os_pratos = new Prato [5];
 
@@ -67,6 +67,8 @@ public class Restaurante {
                         }
                     }
                     System.out.println("O preço do " + num_pedido+ "° pedido foi de R$"+preco_total);
+                    calcPercentual(pedidos);
+
                     num_pedido++;
                     quant = 0;
                     quant_pratos = 0;
@@ -79,5 +81,23 @@ public class Restaurante {
         }catch (FileNotFoundException ex) {
             System.out.println("Erro na leitura do arquivo " + nomeArquivo);
          }
+    }
+    
+    public static void calcPercentual(Item[] pedidos){
+        Double quant_total = 0.0;
+        Double porcent = 0.0;
+        for(int i = 0;i<pedidos.length;i++){
+            if(pedidos[i] != null){
+                quant_total += Item.getQuantItem(pedidos[i]);
+            }
+        }
+        for(int i = 0;i<pedidos.length;i++){
+            if(pedidos[i] != null){
+                porcent = (Item.getQuantItem(pedidos[i])/quant_total)*100;
+                
+                System.out.println("O prato " + Prato.getNomePrato(Item.getPratoItem(pedidos[i])) + " corresponde a " + new DecimalFormat("#,##0.00").format(porcent) + "% do total de pratos do pedido ");
+            }
+        }
+
     }
 }
